@@ -13,6 +13,7 @@ public class RightAngleTriangle {
 			System.out.print("Enter N: ");
 			int n = sc.nextInt();
 			printPattern(n);
+			System.out.println();
 		}
 		sc.close();
 
@@ -27,13 +28,14 @@ public class RightAngleTriangle {
 		}
 	}
 	
-	/*
+	/**
 	 * No of test cases: 2
 	Enter N: 4
 	* 
 	* * 
 	* * * 
 	* * * * 
+	* 
 	Enter N: 7
 	* 
 	* * 
