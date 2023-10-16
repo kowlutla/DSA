@@ -13,6 +13,7 @@ public class RectanglePattern {
 			System.out.print("Enter N: ");
 			int n = sc.nextInt();
 			printPattern(n);
+			System.out.println();
 		}
 		sc.close();
 	}
@@ -25,5 +26,20 @@ public class RectanglePattern {
             System.out.println();
         }
 	}
+	
+	/**
+	 * No of test cases: 2
+		Enter N: 5
+		* * * * * 
+		* * * * * 
+		* * * * * 
+		* * * * * 
+		* * * * * 
+		
+		Enter N: 3
+		* * * 
+		* * * 
+		* * * 
+	 */
 
 }
