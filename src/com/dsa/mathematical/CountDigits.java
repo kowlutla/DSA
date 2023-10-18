@@ -52,4 +52,14 @@ public class CountDigits {
 		return 1 + countDigits2(n / 10);
 	}
 
+	/**
+	 * 	Number of digits in 3456 (countDigits1): 4
+		Number of digits in 789 (countDigits1): 3
+		Number of digits in 100 (countDigits1): 3
+		
+		Number of digits in 3456 (countDigits2): 4
+		Number of digits in 789 (countDigits2): 3
+		Number of digits in 100 (countDigits2): 3
+
+	 */
 }
