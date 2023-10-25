@@ -6,56 +6,61 @@ package com.dsa.bit_magic;
  * Note: AND is bitwise '&' operator.
  */
 public class MaximumAndValue {
-    // Function for finding the maximum AND value using nested loops
-    public static int maxAND1(int arr[], int N) {
-        // Initialize max to 0
-        int max = 0;
-        // Iterate over the array to find the maximum AND value
-        for (int i = 0; i < N; i++) {
-            for (int j = i + 1; j < N; j++) {
-                // Calculate the AND value and update max if necessary
-                max = Math.max((arr[i] & arr[j]), max);
-            }
-        }
+	// Function for finding the maximum AND value using nested loops
+	public static int maxAND1(int arr[], int N) {
+		// Initialize max to 0
+		int max = 0;
+		// Iterate over the array to find the maximum AND value
+		for (int i = 0; i < N; i++) {
+			for (int j = i + 1; j < N; j++) {
+				// Calculate the AND value and update max if necessary
+				max = Math.max((arr[i] & arr[j]), max);
+			}
+		}
 
-        return max;
-    }
+		return max;
+	}
 
-    // Function for finding the maximum AND value without nested loops
-    public static int maxAND(int arr[], int N) {
-        int result = 0;
-        // Iterate from the 31st bit to 0th bit
-        for (int pos = 31; pos >= 0; pos--) {
-            // Calculate the count of set bits with the updated pattern
-            int count = countSetBits((result | (1 << pos)), arr);
-            // If the count is greater than or equal to 2, update the result
-            if (count >= 2) {
-                result = result | (1 << pos);
-            }
-        }
+	// Function to check number of elements in an array
+	// having set MSB as of pattern.
+	public static int checkBit(int pattern, int arr[], int n) {
+		int count = 0;
+		// iterating over all elements in array.
+		for (int i = 0; i < n; i++) {
+			// incrementing counter if element has set MSB as of pattern.
+			if ((pattern & arr[i]) == pattern) {
+				count++;
+			}
+		}
 
-        return result;
-    }
+		// returning the number of element having set MSB as of pattern.
+		return count;
+	}
 
-    // Function to count the number of set bits in the pattern within the array
-    private static int countSetBits(int pattern, int[] arr) {
-        int count = 0;
-        // Iterate over the array
-        for (int i = 0; i < arr.length; i++) {
-            // If the bitwise AND of the array element and pattern equals pattern, increment the count
-            if ((arr[i] & pattern) == pattern) {
-                count++;
-            }
-        }
+	// Function for finding maximum AND value.
+	public static int maxAND(int arr[], int n) {
+		int res = 0, count;
+		// iterating over total of 16 bits from MSB to LSB.
+		for (int bit = 16; bit >= 0; bit--) {
 
-        return count;
-    }
+			// finding the count of element in the array
+			// having set MSB as of [res | (1 << bit)].
+			count = checkBit(res | (1 << bit), arr, n);
 
-    // Main method to test the maxAND functionality
-    public static void main(String[] args) {
-        // Example usage
-        int[] arr = { 4, 8, 12, 16 };
-        System.out.println("Using maxAND1: " + maxAND1(arr, arr.length));
-        System.out.println("Using maxAND: " + maxAND(arr, arr.length));
-    }
+			// if count >= 2 setting particular bit in result.
+			if (count >= 2) {
+				res |= (1 << bit);
+			}
+		}
+		// returning the final maximum AND value.
+		return res;
+	}
+
+	// Main method to test the maxAND functionality
+	public static void main(String[] args) {
+		// Example usage
+		int[] arr = { 4, 8, 12, 16 };
+		System.out.println("Using maxAND1: " + maxAND1(arr, arr.length));
+		System.out.println("Using maxAND: " + maxAND(arr, arr.length));
+	}
 }
