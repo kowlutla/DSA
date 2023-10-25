@@ -1,4 +1,7 @@
 package com.dsa.bit_magic;
+/**
+ * You are given a number N. Find the total count of set bits for all numbers from 1 to N(both inclusive).
+ */
 public class CountSetBitsFrom1ToN {
 
     // Function to return the sum of count of set bits in the integers from 1 to n
