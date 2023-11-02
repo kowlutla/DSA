@@ -42,32 +42,62 @@ public class PythagoreanTriplet {
 		return false;
 	}
 
-	boolean checkTriplet1(int[] arr, int n){
-        for(int i=0;i<n;i++){
-            int a = arr[i]*arr[i];
-            for(int j=0;j<n;j++){
-                if(i!=j){
-                    int b = arr[j]*arr[j];
-                    for(int k = 0;k<n;k++){
-                        if(k!=j && k!=i){
-                            int c = arr[k]*arr[k];
-                            if(c==a+b){
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return false;
-    }
+	// Method to check for a Pythagorean triplet without sorting
+	boolean checkTriplet1(int[] arr, int n) {
+		// Iterate through each element in the array
+		for (int i = 0; i < n; i++) {
+			// Compute the square of the current element
+			int a = arr[i] * arr[i];
+			// Iterate through the array to find other elements
+			for (int j = 0; j < n; j++) {
+				// Ensure the current element is distinct from the first one
+				if (i != j) {
+					// Compute the square of the second element
+					int b = arr[j] * arr[j];
+					// Iterate through the array to find the third element
+					for (int k = 0; k < n; k++) {
+						// Ensure the third element is distinct from the first two
+						if (k != j && k != i) {
+							// Compute the square of the third element
+							int c = arr[k] * arr[k];
+							// Check if the Pythagorean condition is satisfied
+							if (c == a + b) {
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+		// Return false if no such triplet is found
+		return false;
+	}
+
+	// Returns true if there is Pythagorean triplet in ar[0..n-1]
+	boolean checkTriplet2(int ar[], int n) {
+		for (int i = 0; i < n; i++) {
+			for (int j = i + 1; j < n; j++) {
+				for (int k = j + 1; k < n; k++) {
+					// Calculate square of array elements
+					int x = ar[i] * ar[i], y = ar[j] * ar[j], z = ar[k] * ar[k];
+
+					if (x == y + z || y == x + z || z == x + y)
+						return true;
+				}
+			}
+		}
+
+		// If we reach here, no triplet found
+		return false;
+	}
 
 	// Main method to test the Pythagorean triplet functions
 	public static void main(String[] args) {
 		PythagoreanTriplet tripletChecker = new PythagoreanTriplet();
 		int[] arr = { 3, 1, 4, 6, 5 };
 		int n = arr.length;
-		System.out.println("Triplet exists without sorting: " + tripletChecker.checkTriplet1(arr, n));
+		System.out.println("Triplet exists without sorting1: " + tripletChecker.checkTriplet1(arr, n));
+		System.out.println("Triplet exists without sorting2: " + tripletChecker.checkTriplet2(arr, n));
 		System.out.println("Triplet exists using sorting: " + tripletChecker.checkTriplet(arr, n));
 	}
 }
