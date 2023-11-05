@@ -56,4 +56,5 @@ public class MaximumIndex {
         System.out.println("Using brute-force method: " + maxIndexDiff1(arr, n));
         System.out.println("Using optimized method: " + maxIndexDiff(arr, n));
     }
+    
 }
