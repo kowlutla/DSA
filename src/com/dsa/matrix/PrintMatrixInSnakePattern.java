@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class PrintMatrixInSnakePattern {
 
     // Function to return a list of integers visited in snake pattern in the matrix.
-    static ArrayList<Integer> snakePattern(int matrix[][]) {
+    static ArrayList<Integer> snakePattern(int matrix[][]) { 
         int l = matrix.length; // Get the size of the matrix (assuming it's a square matrix)
         ArrayList<Integer> snake = new ArrayList<>(); // Create an ArrayList to store the elements in snake pattern
 
