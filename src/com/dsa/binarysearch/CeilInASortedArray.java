@@ -2,8 +2,8 @@ package com.dsa.binarysearch;
 
 /**
  * Given a sorted array arr[] of size N without duplicates, and given a value x.
- * Floor of x is defined as the largest element K in arr[] such that K is
- * smaller than or equal to x. Find the index of K(0-based indexing).
+ * Ceil of x is defined as the smallest element K in arr[] such that K is
+ * greater than or equal to x. Find the index of K(0-based indexing).
  */
 public class CeilInASortedArray {
 
@@ -21,7 +21,7 @@ public class CeilInASortedArray {
                 end = mid - 1; // Adjust the end index to search in the left half
             }
         }
-        return end; // Return the index of the element that is the ceil of x
+        return start; // Return the index of the element that is the ceil of x
     }
 
     // Main method for demonstration purposes
