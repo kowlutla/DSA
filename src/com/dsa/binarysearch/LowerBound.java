@@ -1,6 +1,8 @@
 package com.dsa.binarysearch;
 
 /**
+ * @author KowlutlaSwamy
+ * 
  * Given an array arr sorted in non-decreasing order and a number x, this class
  * provides a method to return the index of the lower bound of x.
  */
