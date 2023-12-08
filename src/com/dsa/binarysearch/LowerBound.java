@@ -5,6 +5,8 @@ package com.dsa.binarysearch;
  * 
  * Given an array arr sorted in non-decreasing order and a number x, this class
  * provides a method to return the index of the lower bound of x.
+ * 
+ * lower bound: smallest number which is >= x
  */
 public class LowerBound {
 	// Method to find the lower bound of x in the given sorted array arr
