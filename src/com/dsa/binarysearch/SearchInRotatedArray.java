@@ -16,32 +16,32 @@ public class SearchInRotatedArray {
 
 	// Method to search for a target value in a rotated sorted array
 	public int search(int[] nums, int target) {
-		int left = 0, right = nums.length - 1;
-		while (left <= right) {
-			int mid = left + (right - left) / 2;
+		int low = 0, high = nums.length - 1;
+		while (low <= high) {
+			int mid = low + (high - low) / 2;
 
 			// If the middle element is the target, return its index
 			if (nums[mid] == target) {
 				return mid;
-			} else if (nums[left] <= nums[mid]) {
+			} else if (nums[low] <= nums[mid]) {
 				// Check if the left half is sorted and within the target range
 
 				// If the target falls within the sorted left half, adjust the search to the left
-				if (nums[left] <= target && target <= nums[mid]) {
-					right = mid - 1;
+				if (nums[low] <= target && target <= nums[mid]) {
+					high = mid - 1;
 				} else {
 					// Otherwise, adjust the search to the right
-					left = mid + 1;
+					low = mid + 1;
 				}
 			} else {
 				// Right half is sorted and within the target range
 
 				// If the target falls within the sorted right half, adjust the search to the right
-				if (nums[mid] <= target && target <= nums[right]) {
-					left = mid + 1;
+				if (nums[mid] <= target && target <= nums[high]) {
+					low = mid + 1;
 				} else {
 					// Otherwise, adjust the search to the left
-					right = mid - 1;
+					high = mid - 1;
 				}
 			}
 		}
