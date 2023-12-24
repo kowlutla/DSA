@@ -60,7 +60,7 @@ public class SingleElementInSortedArray {
                 return nums[mid];
             }
 
-            // Adjust pointers based on the property of the single non-duplicate
+            // If left part is in correct order
             if ((mid % 2 == 0 && nums[mid] == nums[mid + 1]) || 
                 (mid % 2 == 1 && nums[mid] == nums[mid - 1])) {
                 low = mid + 1;
