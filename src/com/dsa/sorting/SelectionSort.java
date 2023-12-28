@@ -34,7 +34,7 @@ public class SelectionSort implements SortingAlgorithm {
     // Sorting the array in increasing order using selection sort algorithm
     @Override
     public void sortIncreasingOrder(int[] arr) {
-    	System.out.println("\nSorting integer in increasing order using "+this.getClass().getSimpleName());
+    	System.out.println("\nSorting integers in increasing order using "+this.getClass().getSimpleName());
         for (int i = 0; i < arr.length - 1; i++) {
             int min = i;
             // Finding the minimum element's index in the remaining unsorted portion
