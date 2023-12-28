@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class QuickSort implements SortingAlgorithm {
 	
-	 // Main method for testing the bubble sort in increasing and decreasing order
+	 // Main method for testing the quick sort in increasing and decreasing order
     public static void main(String[] args) {
         // Creating an instance of QuickSort class
         QuickSort quickSort = new QuickSort();
