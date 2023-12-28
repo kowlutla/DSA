@@ -53,11 +53,13 @@ public class SelectionSort implements SortingAlgorithm {
     public void sortIncreasingOrder(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int min = i;
+            // Finding the minimum element's index in the remaining unsorted portion
             for (int j = i; j < arr.length; j++) {
                 if (arr[j] < arr[min]) {
                     min = j;
                 }
             }
+            // Swapping the found minimum element with the first unsorted element
             int temp = arr[min];
             arr[min] = arr[i];
             arr[i] = temp;
@@ -69,12 +71,13 @@ public class SelectionSort implements SortingAlgorithm {
     public void sortDecresingOrder(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int max = i;
+            // Finding the maximum element's index in the remaining unsorted portion
             for (int j = i; j < arr.length; j++) {
                 if (arr[j] > arr[max]) {
                     max = j;
                 }
             }
-
+            // Swapping the found maximum element with the first unsorted element
             int temp = arr[max];
             arr[max] = arr[i];
             arr[i] = temp;
