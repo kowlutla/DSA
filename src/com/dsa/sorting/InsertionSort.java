@@ -33,6 +33,7 @@ public class InsertionSort implements SortingAlgorithm {
 
     @Override
     public void sortIncreasingOrder(int[] arr) {
+    	System.out.println("\nSorting integers in increasing order using "+this.getClass().getSimpleName());
         // Sorting integers in increasing order using insertion sort
         for (int i = 0; i < arr.length; i++) {
             int j = i;
@@ -47,6 +48,7 @@ public class InsertionSort implements SortingAlgorithm {
 
     @Override
     public void sortDecresingOrder(int[] arr) {
+    	System.out.println("\nSorting integers in decreasing order using "+this.getClass().getSimpleName());
         // Sorting integers in decreasing order using insertion sort
         for (int i = 0; i < arr.length; i++) {
             int j = i;
