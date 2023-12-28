@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class BubbleSort implements SortingAlgorithm {
 
-	 // Main method for testing the selection sort in increasing and decreasing order
+	 // Main method for testing the bubble sort in increasing and decreasing order
     public static void main(String[] args) {
         // Creating an instance of BubbleSort class
         BubbleSort bubbleSort = new BubbleSort();
