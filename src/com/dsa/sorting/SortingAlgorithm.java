@@ -17,7 +17,7 @@ public interface SortingAlgorithm {
 	
 	static int[] getIntegerArray() {
         Random random = new Random(); // Creating an instance of Random class
-        int size = random.nextInt(10) + 10; // Generating a random size between 10 and 19
+        int size = 20; // Generating a random size of 20
         System.out.println("Size of array is: " + size); // Displaying the size of the array
         int[] arr = new int[size]; // Creating an array with the generated size
 
