@@ -42,7 +42,7 @@ public class SplitArrayLargestSum {
         // Try different sums from the minimum possible sum to the maximum possible sum
         for (int i = min; i <= max; i++) {
             int parts = getSubArraysCount(nums, i); // Get the count of subarrays with the current sum i
-            if (parts == k) {
+            if (parts <= k) {
                 return i; // Return the largest sum if the number of subarrays matches k
             }
         }
@@ -94,8 +94,8 @@ public class SplitArrayLargestSum {
     // Example usage in a main method
     public static void main(String[] args) {
         SplitArrayLargestSum solution = new SplitArrayLargestSum();
-        int[] nums = {7, 2, 5, 10, 8};
-        int k = 2;
+        int[] nums = {15, 10, 19, 10, 5, 18, 7};
+        int k = 5;
 
         // Using the less efficient approach
         int result1 = solution.splitArray1(nums, k);
