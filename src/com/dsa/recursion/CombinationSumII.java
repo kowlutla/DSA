@@ -29,6 +29,50 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CombinationSumII {
+	
+	public List<List<Integer>> combinationSum3(int[] candidates, int target) {
+        // Sorting the candidates array to ensure ascending order
+        Arrays.sort(candidates);
+
+        // Initializing the result list to store combinations
+        List<List<Integer>> result = new ArrayList<>();
+
+        // Initializing variables: index, currentList
+        int index = 0;
+        ArrayList<Integer> currentList = new ArrayList<>();
+
+        // Initiating the recursive combinationSum2 method
+        combinationSum2(candidates, target, index, currentList, result);
+
+        // Returning the resultant combinations
+        return result;
+    }
+
+    private void combinationSum2(int[] candidates, int target, int index,
+                                 List<Integer> currentList, List<List<Integer>> result) {
+        // Base cases: If target becomes negative, or target becomes zero
+        if (target < 0) {
+            return;
+        }
+        if (target == 0) {
+            result.add(new ArrayList<>(currentList));
+            return;
+        }
+
+        // Loop through candidates
+        for (int i = index; i < candidates.length; i++) {
+            // Avoid duplicates
+            if (i > index && candidates[i] == candidates[i - 1]) {
+                continue;
+            }
+            // Add current candidate to the combination list
+            currentList.add(candidates[i]);
+            // Recursive call with reduced target and updated index
+            combinationSum2(candidates, target - candidates[i], i + 1, currentList, result);
+            // Backtrack: Remove the last added element to try other combinations
+            currentList.remove(currentList.size() - 1);
+        }
+    }
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         // Sorting the candidates array to ensure ascending order
