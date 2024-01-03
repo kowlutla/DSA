@@ -1,5 +1,5 @@
 /**
- * 
+ * Print all subsequences whose sum equal to K
  */
 package com.dsa.recursion;
 
@@ -9,12 +9,12 @@ import java.util.ArrayList;
  * @author KowlutlaSwamy
  *
  */
-public class PrintAllSubsequencesWithSumK {
+public class SubsequencesWithSumK2 {
 
     public static void main(String[] args) {
         // Example usage to find subsequences with a given sum
-        int[] arr = {2, 4, 8, 3, 2, 4, -4};
-        int K = 8;
+    	int[] arr = {2, 4, 5, 3, 1, 7};
+        int K = 10;
 
         // Find subsequences with sum 'K' and store the results
         ArrayList<ArrayList<Integer>> results = printSubSequencesWithSumK(arr, K);

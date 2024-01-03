@@ -18,7 +18,7 @@ package com.dsa.recursion;
  * @author KowlutlaSwamy
  *
  */
-public class SubsequenceWithSumK {
+public class SubsequenceWithSumK1 {
 
     // Method to check if there exists a subsequence with the sum equal to K
     public static boolean checkSubsequenceSum(int N, int[] arr, int K) {
