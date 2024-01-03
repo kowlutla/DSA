@@ -33,7 +33,7 @@ import java.util.List;
  * @author KowlutlaSwamy
  *
  */
-public class CombinationSum {
+public class CombinationSum1 {
 
 	public List<List<Integer>> combinationSum(int[] candidates, int target) {
         // Initializing the result list to store combinations
@@ -91,7 +91,7 @@ public class CombinationSum {
 
     // Example main method to demonstrate usage
     public static void main(String[] args) {
-        CombinationSum combinationSum = new CombinationSum();
+        CombinationSum1 combinationSum = new CombinationSum1();
         int[] candidates = {2, 3, 6, 7};
         int target = 12;
         List<List<Integer>> result = combinationSum.combinationSum(candidates, target);
