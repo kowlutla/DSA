@@ -28,13 +28,14 @@ public class SubsequenceWithSumK {
 
     // Recursive helper method to explore subsequence combinations
     private static boolean checkSubsequenceSum(int[] arr, int index, int K) {
-        // If K becomes zero, a subsequence with the sum 'K' is found
-        if (K == 0) {
-            return true;
-        }
         // If the index reaches the end of the array or K becomes negative, no subsequence found
-        if (index == arr.length || K < 0) {
-            return false;
+        if (index == arr.length) {
+        	// If K becomes zero, a subsequence with the sum 'K' is found
+            if (K == 0) {
+                return true;
+            }else {
+            	return false;
+            }
         }
         // Include the current element in the subsequence and recursively check for the remaining elements and sum
         if (checkSubsequenceSum(arr, index + 1, K - arr[index])) {
