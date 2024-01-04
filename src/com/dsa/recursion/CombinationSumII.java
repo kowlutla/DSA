@@ -65,6 +65,10 @@ public class CombinationSumII {
             if (i > index && candidates[i] == candidates[i - 1]) {
                 continue;
             }
+            
+			if (candidates[i] > target)
+				break;
+            
             // Add current candidate to the combination list
             currentList.add(candidates[i]);
             // Recursive call with reduced target and updated index
