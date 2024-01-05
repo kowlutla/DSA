@@ -42,7 +42,7 @@ import java.util.Collections;
 public class Subsets {
 
     // Method to generate subsets of an ArrayList
-    public static ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> A) {
+    public static ArrayList<ArrayList<Integer>> subsets1(ArrayList<Integer> A) {
         // Initialize the result container for subsets
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         
@@ -82,14 +82,47 @@ public class Subsets {
         subsets(A, aux, index + 1, result);
         aux.remove(aux.size() - 1); // Backtrack: Remove the current element to backtrack
     }
+    
+    public static ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> A)
+    {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        //Collections.sort(A);
+        int index = 0;
+        ArrayList<Integer> currentList = new ArrayList<>();
+        subsets(A,index, currentList, result);
+        
+        Collections.sort(result, (a, b) -> {
+            // Custom comparator to sort subsets
+            for (int i = 0; i < Math.min(a.size(), b.size()); i++) {
+                int cmp = Integer.compare(a.get(i), b.get(i));
+                if (cmp != 0) {
+                    return cmp;
+                }
+            }
+            return Integer.compare(a.size(), b.size());
+        });
+        return result;
+    }
+    
+    private static void subsets(ArrayList<Integer> A, int index, ArrayList<Integer> currentList, ArrayList<ArrayList<Integer>> result){
+        result.add(new ArrayList<>(currentList));
+        for(int i = index;i<A.size();i++){
+            currentList.add(A.get(i));
+            subsets(A, i+1, currentList, result);
+            currentList.remove(currentList.size()-1);
+        }
+    }
 
     // Main method to test subset generation
     public static void main(String[] args) {
         ArrayList<Integer> input = new ArrayList<>();
-        input.add(1);
-        input.add(2);
+        input.add(5);
+        input.add(6);
+        input.add(6);
+        input.add(10);
         input.add(3);
-
+        input.add(4);
+        //5 6 6 10 3 4 6 6 4
         // Generate subsets for the given input
         ArrayList<ArrayList<Integer>> subsets = subsets(input);
 
