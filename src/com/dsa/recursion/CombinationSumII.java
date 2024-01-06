@@ -42,13 +42,13 @@ public class CombinationSumII {
         ArrayList<Integer> currentList = new ArrayList<>();
 
         // Initiating the recursive combinationSum2 method
-        combinationSum2(candidates, target, index, currentList, result);
+        combinationSum3(candidates, target, index, currentList, result);
 
         // Returning the resultant combinations
         return result;
     }
 
-    private void combinationSum2(int[] candidates, int target, int index,
+    private void combinationSum3(int[] candidates, int target, int index,
                                  List<Integer> currentList, List<List<Integer>> result) {
         // Base cases: If target becomes negative, or target becomes zero
         if (target < 0) {
@@ -72,7 +72,7 @@ public class CombinationSumII {
             // Add current candidate to the combination list
             currentList.add(candidates[i]);
             // Recursive call with reduced target and updated index
-            combinationSum2(candidates, target - candidates[i], i + 1, currentList, result);
+            combinationSum3(candidates, target - candidates[i], i + 1, currentList, result);
             // Backtrack: Remove the last added element to try other combinations
             currentList.remove(currentList.size() - 1);
         }
