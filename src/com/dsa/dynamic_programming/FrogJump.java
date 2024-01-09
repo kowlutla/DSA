@@ -7,7 +7,7 @@
  * 
  * 
  */
-package com.dsa.dynamic_programming.one_dim_array;
+package com.dsa.dynamic_programming;
 
 import java.util.Arrays;
 
