@@ -22,7 +22,7 @@
 	Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
 	Total amount you can rob = 2 + 9 + 1 = 12.
  */
-package com.dsa.dynamic_programming.one_dim_array;
+package com.dsa.dynamic_programming;
 
 import java.util.Arrays;
 
