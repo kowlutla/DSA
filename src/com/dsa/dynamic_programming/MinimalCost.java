@@ -12,7 +12,7 @@
 
 	Initially, we are present at stone 1 having height 2. We can only reach stone 2 as ‘k’ is 1. So, cost incurred is |2-5| = 3. Now, we are present at stone 2, we can only reach stone 3 as ‘k’ is 1. So, cost incurred is |5-2| = 3. So, the total cost is 6.
  */
-package com.dsa.dynamic_programming.one_dim_array;
+package com.dsa.dynamic_programming;
 
 /**
  * @author KowlutlaSwamy
