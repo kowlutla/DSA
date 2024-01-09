@@ -91,6 +91,27 @@ public class HouseRobber {
         }
         return dp[nums.length - 1]; // Return the maximum profit after traversing all houses
     }
+    
+    //Space Optimization
+	public int robSpaceOptimization(int[] nums) {
+		if (nums.length == 1) {
+			return nums[0];
+		}
+
+		int prev1 = nums[0];
+		int prev2 = 0;
+
+		for (int i = 1; i < nums.length; i++) {
+			// At each house, calculate the maximum profit considering robbing or skipping
+			int take = nums[i] + (i > 1 ? prev2 : 0);// Rob current house
+			int notTake = prev1; // Skip current house
+			int current = Math.max(take, notTake); // Store the maximum profit at the current house
+			prev2 = prev1; // now prev1 will become prev2
+			prev1 = current; // now current will become prev1
+		}
+		//return prev1 as max robber
+		return prev1;
+	}
 
     // Main method for testing
     public static void main(String[] args) {
@@ -105,5 +126,8 @@ public class HouseRobber {
 
         // Test robTabulation method
         System.out.println("Using Tabulation: " + robber.robTabulation(nums));
+    
+        // Test robTabulation method
+        System.out.println("Using Space Optimization: " + robber.robSpaceOptimization(nums));
     }
 }
