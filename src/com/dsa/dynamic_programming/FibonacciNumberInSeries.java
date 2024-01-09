@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.dsa.dynamic_programming.one_dim_array;
+package com.dsa.dynamic_programming;
 
 /**
  * @author KowlutlaSwamy
