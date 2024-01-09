@@ -76,12 +76,16 @@ public class HouseRobber {
 
     // Tabulation solution
     public int robTabulation(int[] nums) {
+		if (nums.length == 1) {
+			return nums[nums.length - 1];
+		}
         int dp[] = new int[nums.length];
-        dp[0] = nums[0];
+		dp[0] = nums[0];
+		dp[1] = Math.max(nums[1], nums[0]);
 
-        for (int i = 1; i < nums.length; i++) {
+        for (int i = 2; i < nums.length; i++) {
             // At each house, calculate the maximum profit considering robbing or skipping
-            int pick = i > 1 ? nums[i] + dp[i - 2] : nums[i] + 0; // Rob current house
+            int pick = nums[i] + dp[i - 2]; // Rob current house
             int notPick = dp[i - 1]; // Skip current house
             dp[i] = Math.max(pick, notPick); // Store the maximum profit at the current house
         }
