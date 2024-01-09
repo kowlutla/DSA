@@ -18,7 +18,7 @@
 	3. 2 steps + 1 step
 	 
  */
-package com.dsa.dynamic_programming;
+package com.dsa.dynamic_programming.one_dim_array;
 
 /**
  * @author KowlutlaSwamy
