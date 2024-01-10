@@ -27,7 +27,7 @@ package com.dsa.dynamic_programming;
 
 import java.util.Arrays;
 
-public class NumberOfUniquePaths {
+public class GridUniquePaths1 {
 
     // Recursive approach to calculate the number of unique paths
     public static int numberOfPathRecursion(int rows, int cols) {
