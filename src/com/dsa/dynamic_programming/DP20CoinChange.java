@@ -100,7 +100,7 @@ public class DP20CoinChange {
 		return dp[index][amount] = Math.min(take, notTake);
 	}
 	
-	public int coinChangeTabulation(int[] coins, int amount) {
+	public static int coinChangeTabulation(int[] coins, int amount) {
 		if (amount == 0) {
 			return 0;
 		}
@@ -134,6 +134,42 @@ public class DP20CoinChange {
 		return dp[n - 1][amount];
 	}
 	
+	public static int coinChangeSpaceOptimization(int[] coins, int amount) {
+		if (amount == 0) {
+			return 0;
+		}
+		Arrays.sort(coins);
+		int n = coins.length;
+		int[] prev = new int[amount + 1];
+
+		for (int currentAmount = 0; currentAmount <= amount; currentAmount++) {
+			if (currentAmount % coins[0] == 0) {
+				prev[currentAmount] = currentAmount / coins[0];
+			} else {
+				prev[currentAmount] = (int) 1e9;
+			}
+		}
+
+		for (int index = 1; index < n; index++) {
+			int[] current = new int[amount + 1];
+			for (int currentAmount = 0; currentAmount <= amount; currentAmount++) {
+				int notTake = prev[currentAmount];
+				int take = (int) 1e9;
+				if (coins[index] <= currentAmount) {
+					take = 1 + current[currentAmount - coins[index]];
+				}
+
+				current[currentAmount] = Math.min(take, notTake);
+			}
+			prev = current;
+		}
+
+		if (prev[amount] >= (int) 1e9) {
+			return -1;
+		}
+		return prev[amount];
+	}
+	
 	public static void main(String[] args) {
         int[] coins = {1, 2, 5};
         int amount = 11;
@@ -148,7 +184,10 @@ public class DP20CoinChange {
 
         // Test coinChangeTabulation
         System.out.println("\nTesting coinChangeTabulation:");
-        DP20CoinChange dp = new DP20CoinChange();
-        System.out.println("Result: " + dp.coinChangeTabulation(coins, amount));
+        System.out.println("Result: " + coinChangeTabulation(coins, amount));
+        
+        // Test coinChangeTabulation
+        System.out.println("\nTesting coinChangeSpaceOptimization:");
+        System.out.println("Result: " + coinChangeSpaceOptimization(coins, amount));
     }
 }
