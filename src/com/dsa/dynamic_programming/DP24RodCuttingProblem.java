@@ -12,108 +12,127 @@ package com.dsa.dynamic_programming;
 
 import java.util.Arrays;
 
-/**
- * @author KowlutlaSwamy
- *
- */
 public class DP24RodCuttingProblem {
 
-	public static int cutRodRecursion(int price[], int n) {
-		return cutRodRecursion(price, n - 1, n);
-	}
+    // Recursive approach to find the maximum profit by cutting the rod
+    public static int cutRodRecursion(int price[], int n) {
+        return cutRodRecursion(price, n - 1, n);
+    }
 
-	private static int cutRodRecursion(int[] price, int index, int length) {
+    // Helper function for recursive approach
+    private static int cutRodRecursion(int[] price, int index, int length) {
+        // Base case: if only one segment is left
+        if (index == 0) {
+            return length * price[0];
+        }
 
-		if (index == 0) {
-			return length * price[0];
-		}
-		int notTake = cutRodRecursion(price, index - 1, length);
-		int take = Integer.MIN_VALUE;
-		int rodLength = index + 1;
-		if (rodLength <= length) {
-			take = price[index]
-					+ cutRodRecursion(price, index, length - rodLength);
-		}
+        // Recursively calculate maximum profit by taking or not taking the current segment
+        int notTake = cutRodRecursion(price, index - 1, length);
+        int take = Integer.MIN_VALUE;
+        int rodLength = index + 1;
+        if (rodLength <= length) {
+            take = price[index] + cutRodRecursion(price, index, length - rodLength);
+        }
 
-		return Math.max(take, notTake);
-	}
+        // Return the maximum profit
+        return Math.max(take, notTake);
+    }
 
-	public static int cutRodMemoization(int price[], int n) {
+    // Memoization approach to find the maximum profit by cutting the rod
+    public static int cutRodMemoization(int price[], int n) {
+        // Create a memoization table initialized with -1
+        int[][] dp = new int[n][n + 1];
+        for (int d[] : dp) {
+            Arrays.fill(d, -1);
+        }
+        return cutRodMemoization(price, n - 1, n, dp);
+    }
 
-		int[][] dp = new int[n][n + 1];
-		for (int d[] : dp) {
-			Arrays.fill(d, -1);
-		}
-		return cutRodMemoization(price, n - 1, n, dp);
-	}
+    // Helper function for memoization approach
+    private static int cutRodMemoization(int[] price, int index, int length, int[][] dp) {
+        // Base case: if only one segment is left
+        if (index == 0) {
+            return length * price[0];
+        }
 
-	private static int cutRodMemoization(int[] price, int index, int length,
-			int[][] dp) {
+        // If the result is already memoized, return it
+        if (dp[index][length] != -1)
+            return dp[index][length];
 
-		if (index == 0) {
-			return length * price[0];
-		}
+        // Recursively calculate maximum profit by taking or not taking the current segment
+        int notTake = cutRodMemoization(price, index - 1, length, dp);
+        int take = Integer.MIN_VALUE;
+        int rodLength = index + 1;
+        if (rodLength <= length) {
+            take = price[index] + cutRodMemoization(price, index, length - rodLength, dp);
+        }
 
-		if (dp[index][length] != -1)
-			return dp[index][length];
-		int notTake = cutRodMemoization(price, index - 1, length, dp);
-		int take = Integer.MIN_VALUE;
-		int rodLength = index + 1;
-		if (rodLength <= length) {
-			take = price[index]
-					+ cutRodMemoization(price, index, length - rodLength, dp);
-		}
+        // Memoize the result and return
+        return dp[index][length] = Math.max(take, notTake);
+    }
 
-		return dp[index][length] = Math.max(take, notTake);
-	}
+    // Tabulation approach to find the maximum profit by cutting the rod
+    public static int cutRodTabulation(int price[], int n) {
+        // Create a DP table
+        int[][] dp = new int[n][n + 1];
 
-	public static int cutRodTabulation(int price[], int n) {
+        // Initialize the first row of the DP table
+        for (int length = 0; length <= n; length++) {
+            dp[0][length] = length * price[0];
+        }
 
-		int[][] dp = new int[n][n + 1];
-		for (int length = 0; length <= n; length++) {
-			dp[0][length] = length * price[0];
-		}
+        // Fill the DP table using a bottom-up approach
+        for (int index = 1; index < n; index++) {
+            for (int length = 0; length <= n; length++) {
+                // Calculate maximum profit by taking or not taking the current segment
+                int notTake = dp[index - 1][length];
+                int take = Integer.MIN_VALUE;
+                int rodLength = index + 1;
+                if (rodLength <= length) {
+                    take = price[index] + dp[index][length - rodLength];
+                }
 
-		for (int index = 1; index < n; index++) {
-			for (int length = 0; length <= n; length++) {
-				int notTake = dp[index - 1][length];
-				int take = Integer.MIN_VALUE;
-				int rodLength = index + 1;
-				if (rodLength <= length) {
-					take = price[index] + dp[index][length - rodLength];
-				}
+                // Update the DP table
+                dp[index][length] = Math.max(take, notTake);
+            }
+        }
 
-				dp[index][length] = Math.max(take, notTake);
-			}
-		}
+        // Return the result stored in the bottom-right cell of the DP table
+        return dp[n - 1][n];
+    }
 
-		return dp[n - 1][n];
-	}
+    // Space-optimized Tabulation approach to find the maximum profit by cutting the rod
+    public static int cutRodSpaceOptimization(int price[], int n) {
+        // Create two arrays to store previous and current rows of the DP table
+        int[] prev = new int[n + 1];
+        int[] current = new int[n + 1];
 
-	public static int cutRodSpaceOptimization(int price[], int n) {
+        // Initialize the first row of the DP table
+        for (int length = 0; length <= n; length++) {
+            prev[length] = length * price[0];
+        }
 
-		int[] prev = new int[n + 1];
-		int[] current = new int[n + 1];
-		for (int length = 0; length <= n; length++) {
-			prev[length] = length * price[0];
-		}
+        // Fill the DP table using a bottom-up approach
+        for (int index = 1; index < n; index++) {
+            for (int length = 0; length <= n; length++) {
+                // Calculate maximum profit by taking or not taking the current segment
+                int notTake = prev[length];
+                int take = Integer.MIN_VALUE;
+                int rodLength = index + 1;
+                if (rodLength <= length) {
+                    take = price[index] + current[length - rodLength];
+                }
 
-		for (int index = 1; index < n; index++) {
-			for (int length = 0; length <= n; length++) {
-				int notTake = prev[length];
-				int take = Integer.MIN_VALUE;
-				int rodLength = index + 1;
-				if (rodLength <= length) {
-					take = price[index] + current[length - rodLength];
-				}
+                // Update the current row of the DP table
+                current[length] = Math.max(take, notTake);
+            }
+            // Update the previous row for the next iteration
+            prev = current;
+        }
 
-				current[length] = Math.max(take, notTake);
-			}
-			prev = current;
-		}
-
-		return prev[n];
-	}
+        // Return the result stored in the last element of the 'prev' array
+        return prev[n];
+    }
 	
 	public static void main(String[] args) {
         // Example inputs
