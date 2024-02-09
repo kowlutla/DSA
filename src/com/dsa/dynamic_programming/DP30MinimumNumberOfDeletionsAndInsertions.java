@@ -71,7 +71,7 @@ public class DP30MinimumNumberOfDeletionsAndInsertions {
         String s2 = "pea";
 
         // Call the canYouMake method to find the minimum number of deletions and insertions required
-        int minOperations = DP30MinimumNumberOfDeletionsAndInsertions.canYouMake(s1, s2);
+        int minOperations = canYouMake(s1, s2);
 
         // Print the minimum number of deletions and insertions required
         System.out.println("Minimum Number of Deletions and Insertions Required: " + minOperations);
