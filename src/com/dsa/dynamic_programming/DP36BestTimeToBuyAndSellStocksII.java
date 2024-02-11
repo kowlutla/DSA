@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @author KowlutlaSwamy
  *
  */
-public class BP36BestTimeToBuyAndSellStocksII {
+public class DP36BestTimeToBuyAndSellStocksII {
 
     // Method to get the maximum profit using recursion
     public static int getMaximumProfitRecursion(int n, int[] values) {
@@ -37,7 +37,7 @@ public class BP36BestTimeToBuyAndSellStocksII {
     }
 
     // Method to get the maximum profit using memoization
-    public int maxProfitMemoization(int[] prices) {
+    public static int maxProfitMemoization(int[] prices) {
         int n = prices.length;
         int dp[][] = new int[n][2]; // Initialize the memoization array
         for (int d[] : dp) {
@@ -47,7 +47,7 @@ public class BP36BestTimeToBuyAndSellStocksII {
     }
 
     // Helper method for memoization
-    private int maxProfitMemoization(int[] values, int day, int canBuy, int[][] dp) {
+    private static int maxProfitMemoization(int[] values, int day, int canBuy, int[][] dp) {
 
         if (day == values.length) { // If all days are traversed, return 0
             return 0;
@@ -70,7 +70,7 @@ public class BP36BestTimeToBuyAndSellStocksII {
     }
 
     // Method to get the maximum profit using tabulation
-    public int maxProfitTabulation(int[] prices) {
+    public static int maxProfitTabulation(int[] prices) {
         int n = prices.length;
         int dp[][] = new int[n + 1][2]; // Initialize the tabulation array
         dp[n][0] = 0;
@@ -97,49 +97,75 @@ public class BP36BestTimeToBuyAndSellStocksII {
 
     // Method to get the maximum profit using space optimization
     public static int maxProfitSpaceOptimization(int n, int[] values) {
-        int nextDay[] = new int[2]; // Initialize an array to store profit for the next day
-        nextDay[0] = 0;
-        nextDay[1] = 0;
+        int aheadDay[] = new int[2]; // Initialize an array to store profit for the next day
+        aheadDay[0] = 0;
+        aheadDay[1] = 0;
 
         for (int day = n - 1; day >= 0; day--) { // Traverse through the days
             int currentDay[] = new int[2]; // Initialize an array to store profit for the current day
             for (int canBuy = 1; canBuy >= 0; canBuy--) { // Iterate through buy and sell states
                 int profit = 0;
                 if (canBuy == 1) { // If the stock can be bought
-                    int buy = -values[day] + nextDay[0]; // Buy the stock and proceed to the next day
-                    int notBuy = nextDay[1]; // Don't buy the stock and proceed to the next day
+                    int buy = -values[day] + aheadDay[0]; // Buy the stock and proceed to the next day
+                    int notBuy = aheadDay[1]; // Don't buy the stock and proceed to the next day
                     profit = Math.max(buy, notBuy); // Choose the maximum profit between buying and not buying
                 } else { // If the stock can be sold
-                    int sell = values[day] + nextDay[1]; // Sell the stock and proceed to the next day
-                    int notSell = nextDay[0]; // Don't sell the stock and proceed to the next day
+                    int sell = values[day] + aheadDay[1]; // Sell the stock and proceed to the next day
+                    int notSell = aheadDay[0]; // Don't sell the stock and proceed to the next day
                     profit = Math.max(sell, notSell); // Choose the maximum profit between selling and not selling
                 }
                 currentDay[canBuy] = profit; // Update the array for the current day
             }
-            nextDay = currentDay; // Update the array for the next day
+            aheadDay = currentDay; // Update the array for the next day
         }
 
-        return nextDay[1]; // Return the maximum profit
+        return aheadDay[1]; // Return the maximum profit
+    }
+    
+ // Method to get the maximum profit using space optimization
+    public static int maxProfitSpaceOptimization2(int n, int[] values) {
+        int aheadDayNotBuy = 0;
+        int aheadDayBuy = 0;
+        int currentDayNotBuy=0, currentDayBuy=0;
+
+        for (int day = n - 1; day >= 0; day--) { // Traverse through the days
+        	
+        	int buy = -values[day] + aheadDayNotBuy; // Buy the stock and proceed to the next day
+            int notBuy = aheadDayBuy; // Don't buy the stock and proceed to the next day
+            currentDayBuy = Math.max(buy, notBuy);
+            
+            int sell = values[day] + aheadDayBuy; // Sell the stock and proceed to the next day
+            int notSell = aheadDayNotBuy; // Don't sell the stock and proceed to the next day
+            currentDayNotBuy = Math.max(sell, notSell); // Choose the maximum profit between selling and not selling
+            
+            aheadDayBuy = currentDayBuy;
+            aheadDayNotBuy = currentDayNotBuy;
+        }
+
+        return aheadDayBuy; // Return the maximum profit
     }
     
     public static void main(String[] args) {
         int[] prices = {7, 1, 5, 3, 6, 4}; // Sample prices array
 
         // Using recursion
-        int maxProfitRecursion = BP36BestTimeToBuyAndSellStocksII.getMaximumProfitRecursion(prices.length, prices);
+        int maxProfitRecursion = getMaximumProfitRecursion(prices.length, prices);
         System.out.println("Maximum profit using recursion: " + maxProfitRecursion);
 
         // Using memoization
-        BP36BestTimeToBuyAndSellStocksII bp = new BP36BestTimeToBuyAndSellStocksII();
-        int maxProfitMemoization = bp.maxProfitMemoization(prices);
+        int maxProfitMemoization = maxProfitMemoization(prices);
         System.out.println("Maximum profit using memoization: " + maxProfitMemoization);
 
         // Using tabulation
-        int maxProfitTabulation = bp.maxProfitTabulation(prices);
+        int maxProfitTabulation = maxProfitTabulation(prices);
         System.out.println("Maximum profit using tabulation: " + maxProfitTabulation);
 
         // Using space optimization
-        int maxProfitSpaceOptimization = BP36BestTimeToBuyAndSellStocksII.maxProfitSpaceOptimization(prices.length, prices);
+        int maxProfitSpaceOptimization = maxProfitSpaceOptimization(prices.length, prices);
         System.out.println("Maximum profit using space optimization: " + maxProfitSpaceOptimization);
+        
+     // Using space optimization
+        int maxProfitSpaceOptimization2 = maxProfitSpaceOptimization2(prices.length, prices);
+        System.out.println("Maximum profit using space optimization2: " + maxProfitSpaceOptimization2);
     }
 }
