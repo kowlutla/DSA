@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class DP43PrintLongestIncreasingSubSequence {
+public class DP42PrintLongestIncreasingSubSequence {
 
 	/**
 	 * This function finds the longest increasing subsequence (LIS) in an array and returns it as a list.
