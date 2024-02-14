@@ -26,7 +26,7 @@ import java.util.Arrays;
  * @author KowlutlaSwamy
  *
  */
-public class DP41And42LengthOfLongestIncreasingSubsequence {
+public class DP41LengthOfLongestIncreasingSubsequence {
 
     // Method to find length of longest increasing subsequence using recursion
     public static int lengthOfLISRecursion(int[] nums) {
@@ -174,23 +174,23 @@ public class DP41And42LengthOfLongestIncreasingSubsequence {
         int[] nums = {10, 9, 2, 5, 3, 7, 101, 18}; // Sample array
 
         // Using recursion
-        int lisRecursion = DP41And42LengthOfLongestIncreasingSubsequence.lengthOfLISRecursion(nums);
+        int lisRecursion = DP41LengthOfLongestIncreasingSubsequence.lengthOfLISRecursion(nums);
         System.out.println("Length of LIS using recursion: " + lisRecursion);
 
         // Using memoization
-        int lisMemoization = DP41And42LengthOfLongestIncreasingSubsequence.lengthOfLISMemoization(nums);
+        int lisMemoization = DP41LengthOfLongestIncreasingSubsequence.lengthOfLISMemoization(nums);
         System.out.println("Length of LIS using memoization: " + lisMemoization);
 
         // Using tabulation
-        int lisTabulation = DP41And42LengthOfLongestIncreasingSubsequence.lengthOfLISTabulation(nums);
+        int lisTabulation = DP41LengthOfLongestIncreasingSubsequence.lengthOfLISTabulation(nums);
         System.out.println("Length of LIS using tabulation: " + lisTabulation);
 
         // Using space optimization
-        int lisSpaceOptimization = DP41And42LengthOfLongestIncreasingSubsequence.lengthOfLISSpaceOptimization(nums);
+        int lisSpaceOptimization = DP41LengthOfLongestIncreasingSubsequence.lengthOfLISSpaceOptimization(nums);
         System.out.println("Length of LIS using space optimization: " + lisSpaceOptimization);
 
         // Using a different algorithm
-        int lisAlgorithm2 = DP41And42LengthOfLongestIncreasingSubsequence.lengthOfLISAlgorithm2(nums);
+        int lisAlgorithm2 = DP41LengthOfLongestIncreasingSubsequence.lengthOfLISAlgorithm2(nums);
         System.out.println("Length of LIS using a different algorithm: " + lisAlgorithm2);
     }
 }
