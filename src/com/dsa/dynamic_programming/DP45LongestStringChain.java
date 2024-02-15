@@ -50,26 +50,41 @@ public class DP45LongestStringChain {
 
         // Initialize all values in the dp array to 1, assuming each word forms a chain of length 1 initially.
         Arrays.fill(dp, 1);
+        
+        int[] hash = new int[N];
+        int lastIndex = 0;
 
         // Keep track of the maximum chain length found so far.
         int max = 1;
 
         // Iterate through each word in the sorted array.
         for (int current = 0; current < N; current++) {
+        	hash[current] = current;
             // Iterate through all previous words.
             for (int prev = 0; prev < current; prev++) {
                 // Check if the current word can be formed by removing one character from the previous word.
                 if (isPossible(words[current], words[prev]) && dp[prev] + 1 > dp[current]) {
                     // If possible and it results in a longer chain, update the dp value for the current word.
                     dp[current] = dp[prev] + 1;
+                    hash[current] = prev;
                 }
             }
 
             // Update the maximum chain length if the current word has a longer chain ending at it.
             if (dp[current] > max) {
                 max = dp[current];
+                lastIndex = current;
             }
         }
+        
+        StringBuffer sb = new StringBuffer();
+        sb.append(words[hash[lastIndex]]);
+        while(hash[lastIndex]!=lastIndex) {
+        	lastIndex = hash[lastIndex];
+        	sb.append(" >- ").append(words[lastIndex]);
+        }
+        
+        System.out.println(sb.reverse());
 
         // Return the maximum chain length found.
         return max;
