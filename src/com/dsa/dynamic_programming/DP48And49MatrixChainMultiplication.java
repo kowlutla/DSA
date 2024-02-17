@@ -99,19 +99,15 @@ public class DP48And49MatrixChainMultiplication {
 		// Iterate through all possible subproblems
 		for (int i = n - 1; i >= 1; i--) {
 			for (int j = i + 1; j < n; j++) {
-				if (i == j) {
-					dp[i][j] = 0; // Base case: If there is only one matrix, no multiplication needed
-				} else {
-					int min = Integer.MAX_VALUE;
-					// Iterate through possible partition points and calculate the minimum
-					// number of multiplications
-					for (int k = i; k < j; k++) {
-						int steps = arr[i - 1] * arr[k] * arr[j] // Cost of multiplication of two matrices
-								+ dp[i][k] + dp[k + 1][j]; // Cost of left and right parts
-						min = Math.min(min, steps); // Update the minimum
-					}
-					dp[i][j] = min; // Store the computed value in the table
+				int min = Integer.MAX_VALUE;
+				// Iterate through possible partition points and calculate the minimum
+				// number of multiplications
+				for (int k = i; k < j; k++) {
+					int steps = arr[i - 1] * arr[k] * arr[j] // Cost of multiplication of two matrices
+							+ dp[i][k] + dp[k + 1][j]; // Cost of left and right parts
+					min = Math.min(min, steps); // Update the minimum
 				}
+				dp[i][j] = min; // Store the computed value in the table
 			}
 		}
 		return dp[1][n - 1]; // Return the result
