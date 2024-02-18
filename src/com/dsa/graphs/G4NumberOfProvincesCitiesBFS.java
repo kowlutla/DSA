@@ -45,7 +45,7 @@ import java.util.Queue;
  * @author KowlutlaSwamy
  *
  */
-public class G4NumberOfProvincesCities {
+public class G4NumberOfProvincesCitiesBFS {
 
     /**
      * Calculates the number of connected components (provinces) in a graph representing cities and roads.

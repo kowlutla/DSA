@@ -36,7 +36,7 @@ import java.util.Queue;
  * @author KowlutlaSwamy
  *
  */
-public class G4NumberOfProvinces {
+public class G4NumberOfProvincesBFS {
 
     /**
      * Calculates the number of connected components (provinces) in an undirected graph.
