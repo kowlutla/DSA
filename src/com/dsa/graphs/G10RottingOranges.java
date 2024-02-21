@@ -29,7 +29,7 @@ package com.dsa.graphs;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class G11RottingOranges {
+public class G10RottingOranges {
 
 	// Inner class representing a pair of (row, col) coordinates and time
 	class Pair {
@@ -98,7 +98,7 @@ public class G11RottingOranges {
         };
 
         // Create an instance of G11RottingOranges class
-        G11RottingOranges rottingOranges = new G11RottingOranges();
+        G10RottingOranges rottingOranges = new G10RottingOranges();
 
         // Calculate the time required for all oranges to rot
         int time = rottingOranges.orangesRotting(grid);
