@@ -20,7 +20,7 @@ package com.dsa.graphs;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class G10FloodFillBFS {
+public class G9FloodFillBFS {
 
     // Inner class representing a pair of row and column indices
     static private class Pair {
@@ -87,7 +87,7 @@ public class G10FloodFillBFS {
         int newColor = 2;
 
         // Perform flood fill
-        int[][] filledImage = G10FloodFillBFS.floodFill(image, sr, sc, newColor);
+        int[][] filledImage = G9FloodFillBFS.floodFill(image, sr, sc, newColor);
 
         // Display the filled image
         System.out.println("Filled Image:");

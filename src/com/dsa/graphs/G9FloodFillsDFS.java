@@ -21,7 +21,7 @@ package com.dsa.graphs;
  * @author KowlutlaSwamy
  *
  */
-public class G10FloodFillsDFS {
+public class G9FloodFillsDFS {
 
 	// Function to perform flood fill using Depth-First Search (DFS)
 	public int[][] floodFill(int[][] image, int sr, int sc, int color) {
@@ -67,7 +67,7 @@ public class G10FloodFillsDFS {
 		int newColor = 2;
 
 		// Create an instance of G10FloodFillsDFS class
-		G10FloodFillsDFS floodFiller = new G10FloodFillsDFS();
+		G9FloodFillsDFS floodFiller = new G9FloodFillsDFS();
 
 		// Perform flood fill
 		int[][] filledImage = floodFiller.floodFill(image, sr, sc, newColor);
