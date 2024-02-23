@@ -37,7 +37,7 @@ import java.util.ArrayList;
  * @author KowlutlaSwamy
  *
  */
-public class G18DetectCycleInDirectedGraphDFS {
+public class G19DetectCycleInDirectedGraphDFS {
 
 	/**
 	 * Determines whether a directed graph represented by an adjacency list contains a cycle using Depth First Search (DFS).
