@@ -33,7 +33,7 @@ import java.util.Arrays;
  * @author KowlutlaSwamy
  *
  */
-public class G17BipartiteGraphDFS {
+public class G18BipartiteGraphDFS {
 
 	/**
 	 * Checks if the given graph represented by an adjacency list is bipartite using Depth First Search (DFS).
