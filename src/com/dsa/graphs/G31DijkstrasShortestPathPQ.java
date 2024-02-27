@@ -1,6 +1,6 @@
 /**
  * 
- *   USING PRIORITY QUEUE
+ *   USING PRIORITY QUEUE/ We can use QUEUE also
 	You have been given an undirected, connected graph of ‘V’ vertices (labelled from 0 to V-1) and ‘E’ edges. Each edge connecting two nodes 'u' and 'v' has a weight denoting the distance between them.
 	Your task is to find the shortest path distance from the source node 'S' to all the vertices. You have to return a list of integers denoting the shortest distance between each vertex and source vertex 'S'.
 	Note:
