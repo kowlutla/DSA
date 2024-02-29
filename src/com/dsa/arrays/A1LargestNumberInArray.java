@@ -11,7 +11,7 @@ package com.dsa.arrays;
  * @author KowlutlaSwamy
  *
  */
-public class LargestNumberInArray {
+public class A1LargestNumberInArray {
 
     // Method to find the largest element in an array
     // Parameters:
