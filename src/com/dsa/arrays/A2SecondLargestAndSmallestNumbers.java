@@ -14,7 +14,7 @@ package com.dsa.arrays;
  * @author KowlutlaSwamy
  *
  */
-public class SecondLargestAndSmallestNumbers {
+public class A2SecondLargestAndSmallestNumbers {
 
     // Method to find the second largest and second smallest elements in an array
     // Parameters:
