@@ -24,7 +24,7 @@ package com.dsa.arrays;
  * @author KowlutlaSwamy
  *
  */
-public class A5A6RotateArray {
+public class A5A6RotateArrayAntiClockWise {
 
     // Method to rotate an array by d positions using an iterative approach
     // Parameters:
