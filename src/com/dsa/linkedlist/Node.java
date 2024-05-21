@@ -4,6 +4,7 @@ public class Node {
 
 	int data;
 	Node next;
+	Node prev; //to use for doubly linkedlist
 
 	Node() {
 		data = 0;
