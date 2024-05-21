@@ -10,6 +10,7 @@ public class Node {
 		data = 0;
 	}
 
+	
 	public Node(int d) {
 		data = d;
 	}
