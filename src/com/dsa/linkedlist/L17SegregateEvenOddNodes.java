@@ -29,27 +29,75 @@ package com.dsa.linkedlist;
  */
 public class L17SegregateEvenOddNodes {
 
-	public static Node divide(int N, Node head) {
-		Node even = new Node(0);
-		Node odd = new Node(0);
+    /**
+     * Segregates even and odd nodes into two separate lists and then combines them.
+     *
+     * Time Complexity: O(N), where N is the number of nodes in the list.
+     * Space Complexity: O(N), due to the creation of new nodes.
+     *
+     * @param head The head node of the linked list.
+     * @return The head of the modified list with all even nodes followed by odd nodes.
+     */
+    public static Node divide1(Node head) {
+        Node even = new Node(0); // Dummy node for the even list
+        Node odd = new Node(0);  // Dummy node for the odd list
 
-		Node current1 = even;
-		Node current2 = odd;
-		Node current = head;
-		while (current != null) {
-			if (current.data % 2 == 0) {
-				Node newNode = new Node(current.data);
-				current1.next = newNode;
-				current1 = current1.next;
-			} else {
-				Node newNode = new Node(current.data);
-				current2.next = newNode;
-				current2 = current2.next;
-			}
-			current = current.next;
-		}
+        Node current1 = even;
+        Node current2 = odd;
+        Node current = head;
 
-		current1.next = odd.next;
-		return even.next;
-	}
+        // Traverse the original list and divide nodes into even and odd lists
+        while (current != null) {
+            if (current.data % 2 == 0) {
+                Node newNode = new Node(current.data); // Create a new node for even list
+                current1.next = newNode;
+                current1 = current1.next;
+            } else {
+                Node newNode = new Node(current.data); // Create a new node for odd list
+                current2.next = newNode;
+                current2 = current2.next;
+            }
+            current = current.next;
+        }
+
+        current1.next = odd.next; // Link the end of even list to the start of odd list
+        return even.next; // Return the head of the new list
+    }
+
+    /**
+     * Segregates even and odd nodes in place within the original list.
+     *
+     * Time Complexity: O(N), where N is the number of nodes in the list.
+     * Space Complexity: O(1), as no extra space is used other than pointers.
+     *
+     * @param N    The number of nodes in the linked list.
+     * @param head The head node of the linked list.
+     * @return The head of the modified list with all even nodes followed by odd nodes.
+     */
+    public static Node divide2(int N, Node head) {
+        Node even = new Node(-1); // Dummy node for the even list
+        Node odd = new Node(-1);  // Dummy node for the odd list
+
+        Node lastEven = even;
+        Node lastOdd = odd;
+
+        Node current = head;
+
+        // Traverse the original list and rearrange nodes in place
+        while (current != null) {
+            if (current.data % 2 == 0) {
+                lastEven.next = current; // Attach to the even list
+                lastEven = current;
+            } else {
+                lastOdd.next = current; // Attach to the odd list
+                lastOdd = current;
+            }
+            current = current.next;
+        }
+
+        lastOdd.next = null; // End the odd list
+        lastEven.next = odd.next; // Link the end of even list to the start of odd list
+        head = even.next; // Update head to the start of the even list
+        return head; // Return the head of the new list
+    }
 }
