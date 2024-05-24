@@ -21,7 +21,7 @@ package com.dsa.linkedlist;
  */
 public class L17OddEvenLinkedList {
 
-	public Node oddEvenList(Node head) {
+	public static Node oddEvenList1(Node head) {
 		Node even = new Node(-1); // Dummy node for the even list
 		Node odd = new Node(-1); // Dummy node for the odd list
 
@@ -50,4 +50,35 @@ public class L17OddEvenLinkedList {
 		head = odd.next; // Update head to the start of the odd list
 		return head; // Return the head of the new list
 	}
+
+	/**
+     * Reorders the linked list such that all odd-indexed nodes are followed by even-indexed nodes.
+     * 
+     * Time Complexity: O(N), where N is the number of nodes in the list.
+     * Space Complexity: O(1), as no extra space is used other than pointers.
+     * 
+     * @param head The head node of the linked list.
+     * @return The head of the reordered linked list.
+     */
+    public static Node oddEvenList2(Node head) {
+        if (head == null || head.next == null) {
+            return head; // If the list is empty or has only one node, return head.
+        }
+        
+        Node odd = head; // Pointer for odd-indexed nodes
+        Node even = head.next; // Pointer for even-indexed nodes
+        Node lastOdd = odd;
+        Node lastEven = even;
+
+        // Traverse the list and reorder nodes to group odd-indexed nodes followed by even-indexed nodes.
+        while (lastEven != null && lastEven.next != null) {
+            lastOdd.next = lastEven.next; // Link the next odd node
+            lastOdd = lastEven.next; // Move the odd pointer
+            lastEven.next = lastOdd.next; // Link the next even node
+            lastEven = lastOdd.next; // Move the even pointer
+        }
+
+        lastOdd.next = even; // Attach the even list to the end of the odd list
+        return odd; // Return the head of the reordered list
+    }
 }
