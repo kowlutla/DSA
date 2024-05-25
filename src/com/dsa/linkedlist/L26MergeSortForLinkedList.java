@@ -26,7 +26,7 @@ package com.dsa.linkedlist;
  * @author KowlutlaSwamy
  *
  */
-public class L25MergeSortForLinkedList {
+public class L26MergeSortForLinkedList {
 
     /**
      * Sorts a linked list using merge sort.
