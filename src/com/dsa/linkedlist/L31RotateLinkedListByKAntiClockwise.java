@@ -28,7 +28,16 @@ package com.dsa.linkedlist;
  */
 public class L31RotateLinkedListByKAntiClockwise {
 
-    // Rotate the linked list by k nodes in an anti-clockwise direction using the first method
+    /**
+     * Rotates the linked list k times anti-clockwise by rotating one node at a time.
+     *
+     * @param head the head of the linked list
+     * @param k the number of rotations
+     * @return the new head of the rotated linked list
+     * 
+     * Time complexity: O(k * n) where n is the length of the list
+     * Space complexity: O(1)
+     */
     public static Node rotate1(Node head, int k) {
         if (head == null || head.next == null) {
             return head; // If the list is empty or has only one node, no rotation is needed
@@ -41,7 +50,12 @@ public class L31RotateLinkedListByKAntiClockwise {
         return head;
     }
 
-    // Rotate the linked list by one node in an anti-clockwise direction
+    /**
+     * Rotates the linked list by one node in an anti-clockwise direction.
+     *
+     * @param head the head of the linked list
+     * @return the new head of the rotated linked list
+     */
     private static Node rotateByOneAntiClock(Node head) {
         Node current = head;
         Node next = head.next;
@@ -59,7 +73,16 @@ public class L31RotateLinkedListByKAntiClockwise {
         return head;
     }
 
-    // Rotate the linked list by k nodes in an anti-clockwise direction using the second method
+    /**
+     * Rotates the linked list k times anti-clockwise in one pass.
+     *
+     * @param head the head of the linked list
+     * @param k the number of rotations
+     * @return the new head of the rotated linked list
+     * 
+     * Time complexity: O(n) where n is the length of the list
+     * Space complexity: O(1)
+     */
     public static Node rotate2(Node head, int k) {
         if (head == null || k == 0) {
             return head; // If the list is empty or no rotation is needed, return the head
@@ -92,7 +115,16 @@ public class L31RotateLinkedListByKAntiClockwise {
         return head;
     }
 
-    // Rotate the linked list by k nodes in an anti-clockwise direction using the third method
+    /**
+     * Rotates the linked list k times anti-clockwise using reverse operations.
+     *
+     * @param head the head of the linked list
+     * @param k the number of rotations
+     * @return the new head of the rotated linked list
+     * 
+     * Time complexity: O(n) where n is the length of the list
+     * Space complexity: O(1)
+     */
     public static Node rotate3(Node head, int k) {
         int n = getLength(head); // Get the length of the list
 
@@ -117,15 +149,22 @@ public class L31RotateLinkedListByKAntiClockwise {
         Node secondHead = reverse(current2); // Reverse the second part
 
         newHead.next = secondHead; // Connect the two parts
-        head = firstHead;
+        head = firstHead; // Update the head
 
         return head;
     }
 
-    // Get the length of the linked list
+    /**
+     * Calculates the length of the linked list.
+     *
+     * @param head the head of the linked list
+     * @return the length of the linked list
+     */
     private static int getLength(Node head) {
         Node current = head;
         int len = 0;
+
+        // Traverse the entire list to count the number of nodes
         while (current != null) {
             len++;
             current = current.next;
@@ -133,7 +172,12 @@ public class L31RotateLinkedListByKAntiClockwise {
         return len;
     }
 
-    // Reverse the linked list
+    /**
+     * Reverses the linked list.
+     *
+     * @param head the head of the linked list
+     * @return the new head of the reversed linked list
+     */
     private static Node reverse(Node head) {
         Node current = head;
         Node next = null;
@@ -141,11 +185,11 @@ public class L31RotateLinkedListByKAntiClockwise {
 
         // Reverse the pointers of the nodes
         while (current != null) {
-            next = current.next; // Store the next node
-            current.next = prev; // Reverse the current node's pointer
-            prev = current; // Move prev to current node
-            current = next; // Move to the next node
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
         }
-        return prev; // Return the new head of the reversed list
+        return prev;
     }
 }
