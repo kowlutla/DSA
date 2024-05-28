@@ -1,12 +1,12 @@
 package com.dsa.binary_tree;
 
 public class Node {
-	int val;
+	int data;
 	Node left;
 	Node right;
 
-	Node(int val) {
-		this.val = val;
+	Node(int data) {
+		this.data = data;
 		left = null;
 		right = null;
 	}
