@@ -33,12 +33,6 @@ package com.dsa.binary_tree;
 
 import java.util.ArrayList;
 
-/**
- * @author KowlutlaSwamy
- *
- */
-import java.util.ArrayList;
-
 public class BT5PostOrderTraversalRecursive {
 
     /**
