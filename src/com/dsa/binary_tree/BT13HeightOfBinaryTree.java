@@ -22,13 +22,6 @@ package com.dsa.binary_tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * @author KowlutlaSwamy
- *
- */
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class BT13HeightOfBinaryTree {
 
     /**
