@@ -32,7 +32,7 @@ package com.dsa.binary_tree;
  * @author KowlutlaSwamy
  *
  */
-public class B16MaximumPathSumFromAnyNode {
+public class BT16MaximumPathSumFromAnyNode {
 
     /**
      * Finds the maximum path sum in the binary tree where the path can start and end at any node.
