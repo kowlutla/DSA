@@ -47,7 +47,7 @@ import java.util.Queue;
  * @author KowlutlaSwamy
  *
  */
-public class B18ZigZagTreeTraversal {
+public class BT18ZigZagTreeTraversal {
 
     /**
      * Performs a zigzag (spiral order) traversal on a binary tree and returns the values as a list.
