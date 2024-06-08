@@ -22,13 +22,61 @@
 package com.dsa.binary_tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @author KowlutlaSwamy
  *
  */
 public class BT23LeftViewOfBinaryTree {
+	
+
+    /**
+     * Computes the left view of a binary tree using level order traversal.
+     * 
+     * Time Complexity: O(N) - where N is the number of nodes in the binary tree.
+     * Space Complexity: O(N) - for the queue used in level order traversal.
+     *
+     * @param root The root node of the binary tree.
+     * @return A List containing the left view of the binary tree.
+     */
+    public static List<Integer> leftView1(Node root) {
+        ArrayList<Integer> nodes = new ArrayList<>();
+        
+        if (root == null) {
+            return nodes; // Return an empty list if the tree is empty
+        }
+
+        // Use a queue to perform level order traversal
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            int size = q.size(); // Number of nodes at the current level
+            
+            // Add the first node of the current level to the result list
+            nodes.add(q.peek().data);
+            
+            // Process all nodes at the current level
+            for (int i = 1; i <= size; i++) {
+                Node temp = q.poll();
+                
+                // Add the left child to the queue if it exists
+                if (temp.left != null) {
+                    q.add(temp.left);
+                }
+                
+                // Add the right child to the queue if it exists
+                if (temp.right != null) {
+                    q.add(temp.right);
+                }
+            }
+        }
+
+        return nodes; // Return the list containing the left view nodes
+    }
 
     /**
      * Computes the left view of a binary tree.
@@ -39,7 +87,7 @@ public class BT23LeftViewOfBinaryTree {
      * @param root The root node of the binary tree.
      * @return A List containing the left view of the binary tree.
      */
-    public static List<Integer> leftView(Node root) {
+    public static List<Integer> leftView2(Node root) {
         ArrayList<Integer> leftViewNodes = new ArrayList<>();
         leftView(root, leftViewNodes, 1); // Start from level 1
         return leftViewNodes;
