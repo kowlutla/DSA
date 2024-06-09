@@ -43,13 +43,6 @@ package com.dsa.binary_tree;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author KowlutlaSwamy
- *
- */
-import java.util.ArrayList;
-import java.util.List;
-
 public class BT28LowestCommonAncestor {
 
     /**
