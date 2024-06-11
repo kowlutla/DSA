@@ -66,36 +66,36 @@ public class BT38BinaryTreeFromInOrderPreOrderII {
      * Helper method to recursively build the binary tree.
      *
      * @param preOrder The preorder traversal array.
-     * @param preStart The start index of the current subtree in the preorder array.
-     * @param preEnd The end index of the current subtree in the preorder array.
+     * @param preOrderStartIndex The start index of the current subtree in the preorder array.
+     * @param preOrderEndIndex The end index of the current subtree in the preorder array.
      * @param inOrder The inorder traversal array.
-     * @param inStart The start index of the current subtree in the inorder array.
-     * @param inEnd The end index of the current subtree in the inorder array.
-     * @param inMap A hashmap mapping node values to their indices in the inorder array.
+     * @param inOrderStartIndex The start index of the current subtree in the inorder array.
+     * @param inOrderEndIndex The end index of the current subtree in the inorder array.
+     * @param inOrderMap A hashmap mapping node values to their indices in the inorder array.
      * @return The root node of the constructed subtree.
      */
-    private static Node buildTree(int[] preOrder, int preStart, int preEnd,
-                                  int[] inOrder, int inStart, int inEnd,
-                                  HashMap<Integer, Queue<Integer>> inMap) {
+    private static Node buildTree(int[] preOrder, int preOrderStartIndex, int preOrderEndIndex,
+                                  int[] inOrder, int inOrderStartIndex, int inOrderEndIndex,
+                                  HashMap<Integer, Queue<Integer>> inOrderMap) {
 
         // Base case: if the indices are out of range, return null
-        if (inStart > inEnd || preStart > preEnd) {
+        if (inOrderStartIndex > inOrderEndIndex || preOrderStartIndex > preOrderEndIndex) {
             return null;
         }
 
         // The root value is the first element in the current preorder range
-        Node root = new Node(preOrder[preStart]);
+        Node root = new Node(preOrder[preOrderStartIndex]);
 
         // Find the index of the root value in the inorder array using the hashmap
-        Queue<Integer> nodes = inMap.get(root.data);
-        int inRoot = nodes.remove();
-        int numLeft = inRoot - inStart;
+        Queue<Integer> nodes = inOrderMap.get(root.data);
+        int rootIndexInInOrder = nodes.remove();
+        int numLeftOnLeftSubTree = rootIndexInInOrder - inOrderStartIndex;
 
         // Recursively build the left and right subtrees
-        root.left = buildTree(preOrder, preStart + 1, preStart + numLeft,
-                              inOrder, inStart, inRoot - 1, inMap);
-        root.right = buildTree(preOrder, preStart + numLeft + 1, preEnd,
-                               inOrder, inRoot + 1, inEnd, inMap);
+        root.left = buildTree(preOrder, preOrderStartIndex + 1, preOrderStartIndex + numLeftOnLeftSubTree,
+                              inOrder, inOrderStartIndex, rootIndexInInOrder - 1, inOrderMap);
+        root.right = buildTree(preOrder, preOrderStartIndex + numLeftOnLeftSubTree + 1, preOrderEndIndex,
+                               inOrder, rootIndexInInOrder + 1, inOrderEndIndex, inOrderMap);
 
         return root;
     }
