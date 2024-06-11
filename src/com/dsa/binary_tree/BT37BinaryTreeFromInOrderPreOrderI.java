@@ -80,12 +80,12 @@ public class BT37BinaryTreeFromInOrderPreOrderI {
         int rootIndexInInOrder = inOrderMap.get(value);
         
         // Number of nodes in the left subtree
-        int numsLeft = rootIndexInInOrder - inOrderStartIndex;
+        int numLeftOnLeftSubTree = rootIndexInInOrder - inOrderStartIndex;
 
         // Recursively build the left and right subtrees
-        root.left = buildTree(preorder, preOrderStartIndex + 1, preOrderStartIndex + numsLeft,
+        root.left = buildTree(preorder, preOrderStartIndex + 1, preOrderStartIndex + numLeftOnLeftSubTree,
                               inorder, inOrderStartIndex, rootIndexInInOrder - 1, inOrderMap);
-        root.right = buildTree(preorder, preOrderStartIndex + numsLeft + 1, preOrderEndIndex,
+        root.right = buildTree(preorder, preOrderStartIndex + numLeftOnLeftSubTree + 1, preOrderEndIndex,
                                inorder, rootIndexInInOrder + 1, inOrderEndIndex, inOrderMap);
 
         return root;
