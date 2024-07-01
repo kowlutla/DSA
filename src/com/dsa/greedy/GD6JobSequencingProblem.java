@@ -38,7 +38,7 @@ import java.util.Arrays;
  * @author KowlutlaSwamy
  *
  */
-public class GD5JobSequencingProblem {
+public class GD6JobSequencingProblem {
 
     class Job {
         int id, profit, deadline;
