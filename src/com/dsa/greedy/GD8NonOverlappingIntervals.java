@@ -26,7 +26,7 @@ import java.util.Arrays;
  * @author KowlutlaSwamy
  *
  */
-public class GD7NonOverlappingIntervals {
+public class GD8NonOverlappingIntervals {
 
     /**
      * Time Complexity: O(N log N) for sorting the intervals based on end times,
