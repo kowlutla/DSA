@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.dsa.stack_queues;
+package com.dsa.stack;
 
 import java.util.Arrays;
 
