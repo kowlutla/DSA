@@ -11,7 +11,7 @@ public class StackDemo {
 	
 	public static void main(String[] args) {
 		
-		Stack<Integer> stack = new ST3StackUsingQueue1<Integer>();
+		Stack<Integer> stack = new ST4StackUsingQueue2<Integer>();
 		stack.push(10);
 		System.out.println(stack);
 		stack.push(11);
