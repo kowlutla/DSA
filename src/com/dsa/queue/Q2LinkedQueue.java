@@ -7,7 +7,7 @@ package com.dsa.queue;
  * @author KowlutlaSwamy
  *
  */
-public class LinkedQueue<T> implements Queue<T> {
+public class Q2LinkedQueue<T> implements Queue<T> {
 	
 	private static class Node<T> {
 		private T data;
@@ -50,7 +50,7 @@ public class LinkedQueue<T> implements Queue<T> {
 	private Node<T> head;
 	private Node<T> tail;
 	
-	public LinkedQueue() {
+	public Q2LinkedQueue() {
 		
 		this.head = null;
 		this.tail = null;
