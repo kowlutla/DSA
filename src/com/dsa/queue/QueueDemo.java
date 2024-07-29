@@ -11,7 +11,7 @@ public class QueueDemo {
 	
 	public static void main(String[] args) {
 		
-		Queue<Integer> q = new Q2LinkedQueue<Integer>();
+		Queue<Integer> q = new Q3QueueUsingStack1<Integer>();
 		q.add(10);
 		System.out.println(q);
 		q.add(11);
