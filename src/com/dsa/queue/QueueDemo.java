@@ -3,100 +3,15 @@
  */
 package com.dsa.queue;
 
-import java.util.Arrays;
-
 /**
  * @author KowlutlaSwamy
  *
  */
-public class Q1QueueUsingArray {
-	
-	static class QueueImpl<T> {
-		
-		private T[] elements;
-		private int front, rear;
-		private int capacity;
-		private int size;
-		
-		@SuppressWarnings("unchecked")
-		public QueueImpl() {
-			
-			this.capacity = 5;
-			this.elements = (T[]) new Object[capacity];
-			front = rear = size = 0;
-			
-		}
-		
-		@SuppressWarnings("unchecked")
-		public QueueImpl(int capacity) {
-			
-			this.capacity = capacity;
-			this.elements = (T[]) new Object[capacity];
-			front = rear = size = 0;
-			
-		}
-		
-		public void add(T data) {
-			
-			if (isFull()) {
-				throw new RuntimeException("Queue is full");
-			}
-			elements[rear % capacity] = data;
-			rear++;
-			size++;
-			
-		}
-		
-		public T remove() {
-			
-			if (isEmpty()) {
-				throw new RuntimeException("Queue is Empty");
-			}
-			T data = elements[front % capacity];
-			elements[front % capacity] = null;
-			front++;
-			size--;
-			return data;
-			
-		}
-		
-		public T peek() {
-			
-			if (isEmpty()) {
-				throw new RuntimeException("Queue is Empty");
-			}
-			return elements[front % capacity];
-			
-		}
-		
-		public int size() {
-			
-			return size;
-			
-		}
-		
-		public boolean isEmpty() {
-			
-			return size() == 0;
-			
-		}
-		
-		public boolean isFull() {
-			
-			return size() == capacity;
-			
-		}
-		
-		public String toString() {
-			
-			return Arrays.toString(elements);
-			
-		}
-	}
+public class QueueDemo {
 	
 	public static void main(String[] args) {
 		
-		QueueImpl<Integer> q = new QueueImpl<Integer>();
+		Queue<Integer> q = new Q1ArrayQueue<Integer>();
 		q.add(10);
 		System.out.println(q);
 		q.add(11);
