@@ -11,7 +11,7 @@ public class QueueDemo {
 	
 	public static void main(String[] args) {
 		
-		Queue<Integer> q = new Q1ArrayQueue<Integer>();
+		Queue<Integer> q = new LinkedQueue<Integer>();
 		q.add(10);
 		System.out.println(q);
 		q.add(11);
@@ -35,6 +35,7 @@ public class QueueDemo {
 //		System.out.println(q.peek());
 		
 		System.out.println("Size Of Queue: " + q.size());
+		System.out.println(q);
 		System.out.println("Queue Elements: ");
 		
 		while (!q.isEmpty()) {
