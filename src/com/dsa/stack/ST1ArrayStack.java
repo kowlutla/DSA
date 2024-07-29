@@ -2,13 +2,13 @@ package com.dsa.stack;
 
 import java.util.Arrays;
 
-public class StackImpl<T> {
+public class ST1ArrayStack<T> {
 	
 	private int size;
 	private T[] elements;
 	
 	@SuppressWarnings("unchecked")
-	public StackImpl() {
+	public ST1ArrayStack() {
 		
 		elements = (T[]) new Object[3];
 		size = 0;
@@ -16,7 +16,7 @@ public class StackImpl<T> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public StackImpl(int initialCapacity) {
+	public ST1ArrayStack(int initialCapacity) {
 		
 		elements = (T[]) new Object[initialCapacity];
 		size = 0;

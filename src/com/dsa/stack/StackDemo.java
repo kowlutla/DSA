@@ -3,8 +3,6 @@
  */
 package com.dsa.stack;
 
-import java.util.Arrays;
-
 /**
  * @author KowlutlaSwamy
  *
@@ -13,7 +11,7 @@ public class StackDemo {
 	
 	public static void main(String[] args) {
 		
-		StackImpl<Integer> stack = new StackImpl<Integer>(2);
+		Stack<Integer> stack = new ST2LinkedStack<Integer>();
 		stack.push(10);
 		System.out.println(stack);
 		stack.push(11);
