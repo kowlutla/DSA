@@ -15,7 +15,7 @@ import java.util.Queue;
  * Implementing stack using queue by making pop operation as costly
  * 
  */
-public class ST4StackUsingQueue2<T> implements Stack<T> {
+public class ST4StackUsingQueue2<T> implements StackCustom<T> {
 	
 	private Queue<T> original;
 	private Queue<T> auxilary;
@@ -38,7 +38,7 @@ public class ST4StackUsingQueue2<T> implements Stack<T> {
 	public T pop() {
 		
 		if (isEmpty()) {
-			throw new RuntimeException("Stack is Empty");
+			throw new RuntimeException("StackCustom is Empty");
 		}
 		
 		// Move all elements of original queue to aux except last element
@@ -61,7 +61,7 @@ public class ST4StackUsingQueue2<T> implements Stack<T> {
 	public T peek() {
 		
 		if (isEmpty()) {
-			throw new RuntimeException("Stack is Empty");
+			throw new RuntimeException("StackCustom is Empty");
 		}
 		return original.remove();
 		

@@ -11,7 +11,7 @@ public class StackDemo {
 	
 	public static void main(String[] args) {
 		
-		Stack<Integer> stack = new ST4StackUsingQueue2<Integer>();
+		StackCustom<Integer> stack = new ST4StackUsingQueue2<Integer>();
 		stack.push(10);
 		System.out.println(stack);
 		stack.push(11);
@@ -23,7 +23,7 @@ public class StackDemo {
 		stack.push(14);
 		System.out.println(stack);
 		
-		System.out.println("Stack Elements: ");
+		System.out.println("StackCustom Elements: ");
 		
 		while (!stack.isEmpty()) {
 			System.out.println(stack.pop());

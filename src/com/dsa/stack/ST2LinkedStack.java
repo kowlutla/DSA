@@ -7,7 +7,7 @@ package com.dsa.stack;
  * @author KowlutlaSwamy
  *
  */
-public class ST2LinkedStack<T> implements Stack<T> {
+public class ST2LinkedStack<T> implements StackCustom<T> {
 	
 	private static class Node<T> {
 		private T data;
@@ -70,7 +70,7 @@ public class ST2LinkedStack<T> implements Stack<T> {
 	public T pop() {
 		
 		if (isEmpty()) {
-			throw new RuntimeException("Stack is empty");
+			throw new RuntimeException("StackCustom is empty");
 		}
 		T data = head.getData();
 		size--;
@@ -83,7 +83,7 @@ public class ST2LinkedStack<T> implements Stack<T> {
 	public T peek() {
 		
 		if (isEmpty()) {
-			throw new RuntimeException("Stack is empty");
+			throw new RuntimeException("StackCustom is empty");
 		}
 		return head.getData();
 		

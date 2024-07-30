@@ -7,7 +7,7 @@ package com.dsa.stack;
  * @author KowlutlaSwamy
  *
  */
-public interface Stack<T> {
+public interface StackCustom<T> {
 	
 	public void push(T data);
 	

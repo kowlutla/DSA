@@ -11,7 +11,7 @@ import java.util.Queue;
  * Implementing stack using queue by making push operation as costly
  * 
  */
-public class ST3StackUsingQueue1<T> implements Stack<T> {
+public class ST3StackUsingQueue1<T> implements StackCustom<T> {
 	
 	private Queue<T> original;
 	private Queue<T> auxiliary;
@@ -45,7 +45,7 @@ public class ST3StackUsingQueue1<T> implements Stack<T> {
 	public T pop() {
 		
 		if (isEmpty()) {
-			throw new RuntimeException("Stack is Empty");
+			throw new RuntimeException("StackCustom is Empty");
 		}
 		return original.remove();
 		
@@ -55,7 +55,7 @@ public class ST3StackUsingQueue1<T> implements Stack<T> {
 	public T peek() {
 		
 		if (isEmpty()) {
-			throw new RuntimeException("Stack is Empty");
+			throw new RuntimeException("StackCustom is Empty");
 		}
 		return original.peek();
 		

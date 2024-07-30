@@ -26,7 +26,7 @@ public class ST1ArrayStack<T> {
 	public void push(T data) {
 		
 		if (isFull()) {
-			System.out.println("Stack is full");
+			System.out.println("StackCustom is full");
 			grow();
 		}
 		elements[size] = data;
@@ -44,7 +44,7 @@ public class ST1ArrayStack<T> {
 	public T pop() {
 		
 		if (isEmpty()) {
-			throw new RuntimeException("Stack is Empty");
+			throw new RuntimeException("StackCustom is Empty");
 		}
 		T data = elements[size - 1];
 		elements[size - 1] = null;
@@ -66,7 +66,7 @@ public class ST1ArrayStack<T> {
 	public T peek() {
 		
 		if (isEmpty()) {
-			throw new RuntimeException("Stack is Empty");
+			throw new RuntimeException("StackCustom is Empty");
 		}
 		return elements[size - 1];
 		
